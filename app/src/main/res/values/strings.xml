@@ -4,4 +4,6 @@
     <string name="bottom_menu_create_reservations">Criar Reserva</string>
     <string name="bottom_menu_profile">Perfil</string>
     <string name="app_logo">Logo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
