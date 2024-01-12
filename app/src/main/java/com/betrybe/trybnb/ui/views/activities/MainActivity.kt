@@ -1,7 +1,6 @@
 package com.betrybe.trybnb.ui.views.activities
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.betrybe.trybnb.R
@@ -21,8 +20,10 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        binding.navigationBottomView.selectedItemId = R.id.profile_menu_tem
+
         binding.navigationBottomView.setOnItemSelectedListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.reservation_menu_item -> {
                     switchFragment(ReservationFragment())
                     true
