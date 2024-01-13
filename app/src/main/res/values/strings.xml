@@ -6,4 +6,6 @@
     <string name="app_logo">Logo</string>
     <string name="input_login_error_message">O campo Login é obrigatório</string>
     <string name="input_password_error_message">O campo Password é obrigatório</string>
+    <string name="success_login">Login feito com sucesso!</string>
+    <string name="failed_login">Insira um Login e Senha válido!</string>
 </resources>

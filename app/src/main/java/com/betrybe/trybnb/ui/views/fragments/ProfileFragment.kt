@@ -4,22 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.betrybe.trybnb.R
 import com.betrybe.trybnb.databinding.FragmentProfileBinding
+import com.betrybe.trybnb.ui.viewmodels.ProfileFragmentViewModel
 import com.google.android.material.textfield.TextInputLayout
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: ProfileFragmentViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+        _binding?.vm = viewModel
+        _binding?.lifecycleOwner = this
         return binding.root
     }
 
@@ -28,10 +34,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         binding.loginButtonProfile.setOnClickListener {
             verifyFields()
-        }
-
-        binding.passwordInputProfile.editText?.doOnTextChanged { _, _, _, _ ->
-            verifyFields()
+            val username = binding.loginInputProfile.editText?.text.toString()
+            val password = binding.passwordInputProfile.editText?.text.toString()
+            viewModel.authLoginBooker(username, password)
         }
     }
 
