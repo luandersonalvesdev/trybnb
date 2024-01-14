@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.betrybe.trybnb.R
 import com.betrybe.trybnb.databinding.FragmentCreateReservationBinding
@@ -29,13 +28,13 @@ class CreateReservationFragment : Fragment(R.layout.fragment_create_reservation)
 
         binding.createReservationButton.setOnClickListener {
             if (verifyFields()) {
-                Toast.makeText(context, "REQUISITANDO", Toast.LENGTH_SHORT).show()
+                binding.textSuccessReservation.visibility = View.VISIBLE
             }
         }
     }
 
     private fun verifyFields(): Boolean {
-        var allFieldsValid = true
+        var isAllFieldsValid = true
 
         val allInputFields = listOf(
             binding.firstNameCreateReservation,
@@ -48,16 +47,32 @@ class CreateReservationFragment : Fragment(R.layout.fragment_create_reservation)
 
         allInputFields.forEach { inputLayout ->
             val text = inputLayout.editText?.text.toString().trim()
-            val errorMessage = "O campo ${inputLayout.hint} é obrigatório"
+            val errorMessage = when (inputLayout.hint) {
+                "Nome do hóspede" -> {
+                    "O campo Nome é obrigatório"
+                }
+                "Sobrenome do hóspede" -> {
+                    "O campo Sobrenome é obrigatório"
+                }
+                "Necessidades adicionais" -> {
+                    "O campo Necessidades Adicionais é obrigatório"
+                }
+                "Preço total" -> {
+                    "O campo Preço Total é obrigatório"
+                }
+                else -> {
+                    "O campo ${inputLayout.hint} é obrigatório"
+                }
+            }
             if (text.isEmpty()) {
                 validateField(inputLayout, errorMessage)
-                allFieldsValid = false
+                isAllFieldsValid = false
             } else {
                 validateField(inputLayout, null)
             }
         }
 
-        return allFieldsValid
+        return isAllFieldsValid
     }
 
     private fun validateField(inputLayout: TextInputLayout, errorMessage: String?) {

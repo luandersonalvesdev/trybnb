@@ -114,6 +114,15 @@
             android:layout_marginBottom="20dp"
             android:text="@string/deposit_paid_text"/>
 
+        <TextView
+            android:id="@+id/text_success_reservation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="Reserva feita com sucesso!"
+            android:visibility="invisible" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/create_reservation_button"
             android:layout_width="match_parent"

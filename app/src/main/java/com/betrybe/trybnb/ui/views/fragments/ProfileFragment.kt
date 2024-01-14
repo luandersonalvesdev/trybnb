@@ -42,7 +42,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun verifyFields(): Boolean {
-        var allFieldsValid = true
+        var isAllFieldsValid = true
 
         val allInputFields = listOf(
             binding.loginInputProfile,
@@ -54,13 +54,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val errorMessage = "O campo ${inputLayout.hint} é obrigatório"
             if (text.isEmpty()) {
                 validateField(inputLayout, errorMessage)
-                allFieldsValid = false
+                isAllFieldsValid = false
             } else {
                 validateField(inputLayout, null)
             }
         }
 
-        return allFieldsValid
+        return isAllFieldsValid
     }
 
     private fun validateField(inputLayout: TextInputLayout, errorMessage: String?) {

@@ -14,9 +14,9 @@
     <string name="item_additional_needs_text">Informações Adicionais</string>
     <string name="coin_symbol">R$</string>
     <string name="create_reservation">Criar Reserva</string>
-    <string name="guest_firstname_text">Nome</string>
-    <string name="guest_lastname_text">Sobrenome</string>
-    <string name="additional_needs_text">Necessidades Adicionais</string>
-    <string name="total_price_text">Preço Total</string>
+    <string name="guest_firstname_text">Nome do hóspede</string>
+    <string name="guest_lastname_text">Sobrenome do hóspede</string>
+    <string name="additional_needs_text">Necessidades adicionais</string>
+    <string name="total_price_text">Preço total</string>
     <string name="deposit_paid_text">Depósito Pago</string>
 </resources>
