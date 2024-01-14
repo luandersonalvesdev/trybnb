@@ -8,4 +8,9 @@
     <string name="input_password_error_message">O campo Password é obrigatório</string>
     <string name="success_login">Login feito com sucesso!</string>
     <string name="failed_login">Insira um Login e Senha válido!</string>
+    <string name="guest_name">Nome do Hóspede</string>
+    <string name="item_checkin_text">Checkin</string>
+    <string name="item_checkout_text">Checkout</string>
+    <string name="item_additional_needs_text">Informações Adicionais</string>
+    <string name="coin_symbol">R$</string>
 </resources>
