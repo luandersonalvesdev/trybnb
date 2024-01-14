@@ -33,32 +33,38 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.loginButtonProfile.setOnClickListener {
-            verifyFields()
-            val username = binding.loginInputProfile.editText?.text.toString()
-            val password = binding.passwordInputProfile.editText?.text.toString()
-            viewModel.authLoginBooker(username, password)
+            if (verifyFields()) {
+                val username = binding.loginInputProfile.editText?.text.toString()
+                val password = binding.passwordInputProfile.editText?.text.toString()
+                viewModel.authLoginBooker(username, password)
+            }
         }
     }
 
-    private fun verifyFields() {
-        val loginText = binding.loginInputProfile.editText?.text.toString().trim()
-        val passwordText = binding.passwordInputProfile.editText?.text.toString().trim()
+    private fun verifyFields(): Boolean {
+        var allFieldsValid = true
 
-        validateField(
+        val allInputFields = listOf(
             binding.loginInputProfile,
-            loginText,
-            getString(R.string.input_login_error_message)
+            binding.passwordInputProfile
         )
 
-        validateField(
-            binding.passwordInputProfile,
-            passwordText,
-            getString(R.string.input_password_error_message)
-        )
+        allInputFields.forEach { inputLayout ->
+            val text = inputLayout.editText?.text.toString().trim()
+            val errorMessage = "O campo ${inputLayout.hint} é obrigatório"
+            if (text.isEmpty()) {
+                validateField(inputLayout, errorMessage)
+                allFieldsValid = false
+            } else {
+                validateField(inputLayout, null)
+            }
+        }
+
+        return allFieldsValid
     }
 
-    private fun validateField(inputLayout: TextInputLayout, text: String, errorMessage: String) {
-        inputLayout.error = if (text.isEmpty()) errorMessage else null
+    private fun validateField(inputLayout: TextInputLayout, errorMessage: String?) {
+        inputLayout.error = errorMessage
     }
 
     override fun onDestroyView() {
